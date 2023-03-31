@@ -11,6 +11,8 @@ import {
     RecoilRoot,
   
   } from 'recoil';
+import SkillPage from './Subpages/SkillPage';
+import ProjectPage from './Subpages/ProjectPage';
 function DetailsPage()
 {
 
@@ -23,7 +25,7 @@ function DetailsPage()
       
            <Col lg={12} className="">
            <RecoilRoot>
-           {menu==0?<BasicDetails changemenu={setMenu}></BasicDetails>:menu==1?<WorkExperience changemenu={setMenu}></WorkExperience>:menu==2?<Education changemenu={setMenu}></Education>:<OutputPage></OutputPage>}
+           {menu==0?<BasicDetails changemenu={setMenu}></BasicDetails>:menu==1?<WorkExperience changemenu={setMenu}></WorkExperience>:menu==2?<Education changemenu={setMenu}></Education>:menu==3?<ProjectPage  changemenu={setMenu}></ProjectPage>:menu==4?<SkillPage changemenu={setMenu}></SkillPage>:<OutputPage></OutputPage>}
            </RecoilRoot>
            </Col>
         </Row>

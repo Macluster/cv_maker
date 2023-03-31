@@ -28,15 +28,17 @@ function WorkExperience(props) {
             <img src={bg2} className='position-absolute h-100 w-100 ' style={{zIndex:0}}></img>
             <div className='d-flex flex-column align-items-center'>
             <div style={{height:50}}></div>
-            <h2 className='text-40 m-10 color-red'>WorkExperience</h2>
+            <h2 className='text-40 m-10 color-red' style={{zindex:10,color:'white',position:'relative'}} >WorkExperience</h2>
             <div style={{ height: 50 }}></div>
-            <h3 className='align-self-start p-10' >My Work Experiences</h3>
+            <h3 className='align-self-start p-10' style={{zindex:5,color:'white',position:'relative'}} >My Work Experiences</h3>
 
 
 
             <div style={{ height: 300, overflow: 'scroll', width: '100%' }}>
                 {data.map((e) => (<ExperienceDataCard data={e}></ExperienceDataCard>))}
 
+           
+           
             </div>
             <div style={{height:30}}></div>
 

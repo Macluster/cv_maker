@@ -5,20 +5,21 @@ import { Button } from 'react-bootstrap';
 import bg2 from '../../../assets/bg2.png';
 
 
-import {EducationAtom} from '../../state/Atoms.js'
+
+import {skillAtom} from '../../state/Atoms.js'
 import {
   
     useRecoilState,
     
   } from 'recoil';
-function Education(props) {
+function SkillPage(props) {
 
     const [popUpflag, setPopUpflag] = useState(false);
 
-    const [EducationData,setEducationdata]=useRecoilState(EducationAtom)
+    const [skillData,setskilldata]=useRecoilState(skillAtom)
     const [data, setData] = useState([
-        { courseName: "Integrated MCA", instituitionName: "Scms school of technology and management", startDate: "2 june 2023", endDate: "2 june 2023" },
-        { courseName: "BCom", instituitionName: "Scms school of technology and management", startDate: "2 june 2023", endDate: "2 june 2023" },
+        { skillName:"Flutter",skillLevel:8 },
+        { skillName:"React",skillLevel:6 }
 
     ])
     return (
@@ -27,26 +28,27 @@ function Education(props) {
             <img src={bg2} className='position-absolute h-100 w-100 ' style={{zIndex:0}}></img>
             <div className='d-flex flex-column align-items-center'>
             <div style={{height:50}}></div>
-            <h2 className='text-40 m-10 color-red'  style={{zindex:10,color:'white',position:'relative'}}>Education</h2>
+            <h2 className='text-40 m-10 color-red' style={{zindex:10,color:'white',position:'relative'}}>Skills</h2>
             <div style={{ height: 50 }}></div>
-            <h3 className='align-self-start p-10'  style={{zindex:10,color:'white',position:'relative'}} >My Educations</h3>
+            <h3 className='align-self-start p-10'   style={{zindex:10,color:'white',position:'relative'}} >My Skills</h3>
 
 
 
             <div style={{ height: 300, overflow: 'scroll', width: '100%' }}>
-                {data.map((e) => (<ExperienceDataCard data={e}></ExperienceDataCard>))}
+                {data.map((e) => (<SKillsDataCard data={e}></SKillsDataCard>))}
 
             </div>
             <div style={{height:30}}></div>
+
             <div  style={{ width: '90%', display: 'flex', zIndex:4,flexDirection: 'row', alignItems: 'center', border: '1px solid black', padding: 10, justifyContent: 'center',backgroundColor:'rgba(100,100,100,0.5)' }}>
-                <h2 className='text-25'>Add Education</h2>
+                <h2 className='text-25'>Add Skills</h2>
                 <div style={{ width: 10 }}></div>
                 <img src="https://cdn-icons-png.flaticon.com/128/9572/9572704.png" height={30} width={30} onClick={() => { popUpflag == true ? setPopUpflag(false) : setPopUpflag(true) }}></img>
 
             </div>
             </div>
             <div style={{height:30}}></div>
-            <Button  style={{justifySelf:'flex-end' ,zIndex:5}} onClick={()=>{props.changemenu(3); setEducationdata(data)}}>Next</Button>
+            <Button  style={{justifySelf:'flex-end',zIndex:5}} onClick={()=>{props.changemenu(5); setskilldata(data)}}>Next</Button>
 
           
 
@@ -65,16 +67,14 @@ function Education(props) {
 function WorkExpCard(props) {
 
 
-    const [courseName, setName] = useState("");
-    const [instituitionName, setInstituition] = useState("");
-    
-    const [startdate, setstartDate] = useState("");
-    const [enddate, setendDate] = useState("");
+    const [skillName, setskillName] = useState("");
+    const [skillLevel, setskillLevel] = useState("");
+
 
 
     function set() {
 
-        props.datas.push({ courseName:  courseName, instituitionName: instituitionName, startDate: startdate, endDate: enddate });
+        props.datas.push({ skillName:skillName,skillLevel:skillLevel });
         props.addData(props.datas)
         props.function(false)
     }
@@ -88,17 +88,15 @@ function WorkExpCard(props) {
            <Container className=' d-flex justify-content-center align-items-center'>
             <Row lg={12} >
                 <Col lg={12} className="d-flex flex-row justify-content-center align-items-center " >
-            <div  style= {{padding:40}} className="h-auto w-auto d-flex flex-column align-items-center p-40 bg-primary">
+            <div style= {{padding:40}} className="h-auto w-auto d-flex flex-column align-items-center p-40 bg-primary">
                 <h3 style={{ margin: 0, textAlign: 'end', width: '100%' }} onClick={() => { props.function(false) }}>X </h3>
-                <h2> Add Education</h2>
-                <input type="text" placeholder="Course Name" onChange={(e) => { setName(e.target.value) }} />
+                <h2> Add Skills</h2>
+                <input type="text" placeholder="Skill Name" onChange={(e) => { setskillName(e.target.value) }} />
                 <div style={{height:30}}></div>
-                <input type="text" placeholder="Instituition Name" onChange={(e) => { setInstituition(e.target.value) }} />
+                <input type="text" placeholder="Skill Level" onChange={(e) => { setskillLevel(e.target.value) }} />
                 <div style={{height:30}}></div>
-                <input type="text" placeholder="Start Date" onChange={(e) => { setstartDate(e.target.value) }} />
-                <div style={{height:30}}></div>
-                <input type="text" placeholder="End date" onChange={(e) => { setendDate(e.target.value) }} />
-                <div style={{height:30}}></div>
+              
+            
                 <button onClick={() => { set() }}>Submit</button>
 
 
@@ -110,7 +108,7 @@ function WorkExpCard(props) {
     );
 }
 
-function ExperienceDataCard(props) {
+function SKillsDataCard(props) {
     //
     //'https://cdn-icons-png.flaticon.com/128/565/565491.png
     return (
@@ -120,7 +118,7 @@ function ExperienceDataCard(props) {
                 <Row className='d-flex flex-row justify-content-start'>
                     <div style={{ display: 'flex', flexDirection: 'row', }}>
 
-                        <h5>{props.data.courseName}</h5>
+                        <h5>SKill</h5>
 
                         <div style={{ width: 50 }}></div>
                         <img src="https://cdn-icons-png.flaticon.com/128/2355/2355330.png" height='20px' width='20px'></img>
@@ -133,9 +131,9 @@ function ExperienceDataCard(props) {
                     <h2></h2>
                 </Row>
                 <Row >
-                    <Col ><div style={{display:'flex',flexDirection:'row',width:250}}><h6 style={{fontSize:15,marginRight:10}} className='fw-bold '>Instituition Name: </h6><h6 style={{fontSize:15,overflow:'scroll'}}>{props.data.instituitionName}</h6> </div></Col>
-                    <Col ><div style={{display:'flex',flexDirection:'row'}}><h6 style={{fontSize:15,marginRight:10}} className='fw-bold'>Start Date: </h6><h6 style={{fontSize:15}}>{props.data.startDate}</h6> </div></Col>
-                    <Col ><div style={{display:'flex',flexDirection:'row'}}><h6 style={{fontSize:15}} className='fw-bold'>End Date: </h6><h6 style={{fontSize:15}}>{props.data.endDate}</h6> </div></Col>
+                    <Col ><div style={{display:'flex',flexDirection:'row'}}><h6 style={{fontSize:15}} className='fw-bold '>skill name: </h6><h6 style={{fontSize:15}}>{props.data.skillName}</h6> </div></Col>
+                    <Col ><div style={{display:'flex',flexDirection:'row'}}><h6 style={{fontSize:15}} className='fw-bold'>skill Level: </h6><h6 style={{fontSize:15}}>{props.data.skillLevel}</h6> </div></Col>
+                  
 
                 </Row>
                 
@@ -146,4 +144,4 @@ function ExperienceDataCard(props) {
     )
 }
 
-export default Education;
+export default SkillPage;
